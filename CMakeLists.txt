@@ -7,5 +7,3 @@ add_subdirectory(matplotplusplus)
 
 add_executable(3520_nn_project main.cpp)
 target_link_libraries(3520_nn_project PUBLIC matplot)
-
-add_executable(3520_nn_project main.cpp)
