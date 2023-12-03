@@ -12,6 +12,7 @@ int main() {
 
 
     cout << "about to plot" << endl;
+
     plot(x, y);
     cout << "plot called" << endl;
 
