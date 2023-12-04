@@ -6,7 +6,7 @@ import random
 import pandas as pd
 tf.keras.utils.disable_interactive_logging()
 
-class CategoricalNN:
+class RegressionNN:
     def __init__(self, input_size, output_size):
         self.input_size = input_size # number of inputs the agents take
         self.output_size = output_size # number of outputs the agents has to choose from
