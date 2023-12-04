@@ -3,6 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/commata" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/frugally-deep" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/matplotplusplus" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/vcpkg" vcs="Git" />
   </component>
