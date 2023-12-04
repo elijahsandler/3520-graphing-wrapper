@@ -44,4 +44,4 @@ x, y = generate_dummy_data(10000)
 nn = RegressionNN(3, 1)
 nn.fit(x, y)
 
-model.save('regression_nn.keras')
+nn.model.save('regression_nn.keras')
