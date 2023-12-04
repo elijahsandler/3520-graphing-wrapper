@@ -1,0 +1,15 @@
+# This is a generated file and its contents are an internal implementation detail.
+# The download step will be re-executed if anything in this file changes.
+# No other meaning or use of this file is supported.
+
+method=git
+command=C:/Program Files/JetBrains/CLion 2023.2.1/bin/cmake/win/x64/bin/cmake.exe;-P;C:/Users/elija/OneDrive/Documents/courses/cs3520/3520-nn-project/cmake-build-debug/_deps/commata-subbuild/commata-populate-prefix/tmp/commata-populate-gitclone.cmake
+source_dir=C:/Users/elija/OneDrive/Documents/courses/cs3520/3520-nn-project/cmake-build-debug/_deps/commata-src
+work_dir=C:/Users/elija/OneDrive/Documents/courses/cs3520/3520-nn-project/cmake-build-debug/_deps
+repository=https://github.com/furfurylic/commata.git
+remote=origin
+init_submodules=TRUE
+recurse_submodules=--recursive
+submodules=
+CMP0097=NEW
+

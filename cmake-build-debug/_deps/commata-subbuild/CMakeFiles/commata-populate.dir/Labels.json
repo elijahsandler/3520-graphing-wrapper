@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Users/elija/OneDrive/Documents/courses/cs3520/3520-nn-project/cmake-build-debug/_deps/commata-subbuild/CMakeFiles/commata-populate"
+		},
+		{
+			"file" : "C:/Users/elija/OneDrive/Documents/courses/cs3520/3520-nn-project/cmake-build-debug/_deps/commata-subbuild/CMakeFiles/commata-populate.rule"
+		},
+		{
+			"file" : "C:/Users/elija/OneDrive/Documents/courses/cs3520/3520-nn-project/cmake-build-debug/_deps/commata-subbuild/CMakeFiles/commata-populate-complete.rule"
+		},
+		{
+			"file" : "C:/Users/elija/OneDrive/Documents/courses/cs3520/3520-nn-project/cmake-build-debug/_deps/commata-subbuild/commata-populate-prefix/src/commata-populate-stamp/commata-populate-build.rule"
+		},
+		{
+			"file" : "C:/Users/elija/OneDrive/Documents/courses/cs3520/3520-nn-project/cmake-build-debug/_deps/commata-subbuild/commata-populate-prefix/src/commata-populate-stamp/commata-populate-configure.rule"
+		},
+		{
+			"file" : "C:/Users/elija/OneDrive/Documents/courses/cs3520/3520-nn-project/cmake-build-debug/_deps/commata-subbuild/commata-populate-prefix/src/commata-populate-stamp/commata-populate-download.rule"
+		},
+		{
+			"file" : "C:/Users/elija/OneDrive/Documents/courses/cs3520/3520-nn-project/cmake-build-debug/_deps/commata-subbuild/commata-populate-prefix/src/commata-populate-stamp/commata-populate-install.rule"
+		},
+		{
+			"file" : "C:/Users/elija/OneDrive/Documents/courses/cs3520/3520-nn-project/cmake-build-debug/_deps/commata-subbuild/commata-populate-prefix/src/commata-populate-stamp/commata-populate-mkdir.rule"
+		},
+		{
+			"file" : "C:/Users/elija/OneDrive/Documents/courses/cs3520/3520-nn-project/cmake-build-debug/_deps/commata-subbuild/commata-populate-prefix/src/commata-populate-stamp/commata-populate-patch.rule"
+		},
+		{
+			"file" : "C:/Users/elija/OneDrive/Documents/courses/cs3520/3520-nn-project/cmake-build-debug/_deps/commata-subbuild/commata-populate-prefix/src/commata-populate-stamp/commata-populate-test.rule"
+		},
+		{
+			"file" : "C:/Users/elija/OneDrive/Documents/courses/cs3520/3520-nn-project/cmake-build-debug/_deps/commata-subbuild/commata-populate-prefix/src/commata-populate-stamp/commata-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"commata-populate"
+		],
+		"name" : "commata-populate"
+	}
+}
