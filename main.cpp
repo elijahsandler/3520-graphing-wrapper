@@ -1,22 +1,35 @@
 #include <iostream>
 #include <matplot/matplot.h>
-using namespace matplot;
+#include <commata/parse_csv.hpp>
+#include <commata/stored_table.hpp>
+
+using commata::make_stored_table_builder;
+using commata::parse_csv;
+using commata::stored_table;
+
+using namespace matplot; using namespace std;
 
 int main(int argc, char *argv[]) {
 
-    std::vector<double> lon = iota(-170, 10, 170);
-    std::vector<double> lat =
-            transform(lon, [](double x) { return 50. * cosd(3 * x); });
-    std::vector<double> A = transform(
-            lon, [](double lon) { return (101. + 100 * (sind(2 * lon))) / 7; });
-    std::vector<double> C =
-            transform(lon, [](double lon) { return cosd(4 * lon); });
+    // create an empty table
+    stored_table world_cities;
 
-    geoscatter(lat, lon, A, C)
-            ->marker_style(line_spec::marker_style::upward_pointing_triangle);
+    // load csv
+    parse_csv(std::ifstream("../worldcities.csv"), make_stored_table_builder(world_cities));
 
-    show();
-    return 0;
+    world_cities.content();
 
+    vector<double> lat {};
+    vector<double> lon {};
+    vector<double> pop {};
+    vector<double> capital {};
+
+
+//    auto log_tsunami_height =
+//            transform(tsunami_height, [](double x) { return log(x + 2); });
+//
+//    geobubble(tsunami_lat, tsunami_lon, log_tsunami_height);
+//
+//    show();
     return 0;
 }

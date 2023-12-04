@@ -18,8 +18,20 @@ set(CMAKE_CXX_STANDARD 17)
 #find_package(frugally-deep CONFIG REQUIRED)
 
 add_subdirectory(matplotplusplus)
+include(FetchContent)
 
-add_executable(3520_nn_project main.cpp)
-target_link_libraries(3520_nn_project PUBLIC matplot)
+FetchContent_Declare(
+        commata
+        GIT_REPOSITORY https://github.com/furfurylic/commata.git
+        GIT_TAG        master       # In fact, a commit hash is better
+)
+
+FetchContent_MakeAvailable(commata)
+
+
+
+add_executable(cpp_graphing main.cpp)
+target_link_libraries(cpp_graphing PUBLIC matplot)
+target_link_libraries(cpp_graphing PRIVATE commata)
 #target_link_libraries(3520_nn_project PRIVATE frugally-deep::fdeep)
 
