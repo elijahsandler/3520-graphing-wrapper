@@ -1,3 +1,0 @@
-C:/Users/elija/OneDrive/Documents/courses/cs3520/3520-nn-project/cmake-build-debug/CMakeFiles/3520_nn_project.dir
-C:/Users/elija/OneDrive/Documents/courses/cs3520/3520-nn-project/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/elija/OneDrive/Documents/courses/cs3520/3520-nn-project/cmake-build-debug/CMakeFiles/rebuild_cache.dir

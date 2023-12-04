@@ -1,3 +1,0 @@
-C:/Users/elija/OneDrive/Documents/courses/cs3520/3520-nn-project/cmake-build-debug/_deps/commata-subbuild/CMakeFiles/commata-populate.dir
-C:/Users/elija/OneDrive/Documents/courses/cs3520/3520-nn-project/cmake-build-debug/_deps/commata-subbuild/CMakeFiles/edit_cache.dir
-C:/Users/elija/OneDrive/Documents/courses/cs3520/3520-nn-project/cmake-build-debug/_deps/commata-subbuild/CMakeFiles/rebuild_cache.dir
