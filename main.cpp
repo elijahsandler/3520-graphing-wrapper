@@ -1,35 +1,11 @@
-#include <cmath>
-#include <matplot/matplot.h>
-#include <iostream>
-#include <cstdlib>
-using namespace matplot; using namespace std;
+
+#include <fdeep/fdeep.hpp>
 
 int main() {
-    const char* runPyCmd = "python ../frugally-deep/keras_export/convert_model.py regression_nn.keras fdeep_model.json";
-    int result = system(runPyCmd);
-
-    return result;
+    const auto model = fdeep::load_model("output_json.json");
+//    const auto result = model.predict(
+//            {fdeep::tensor(fdeep::tensor_shape(static_cast<std::size_t>(3)),
+//                           std::vector<float>{.21, .32, .83})});
+//    std::cout << fdeep::show_tensors(result) << std::endl;
+    return 0;
 }
-
-#include <iostream>
-#include <fstream>
-#include <commata/parse_csv.hpp>
-#include <commata/stored_table.hpp>
-
-//using commata::make_stored_table_builder;
-//using commata::parse_csv;
-//using commata::stored_table;
-//using namespace std;
-//
-//int main() {
-//
-//    stored_table colorTable;
-//
-//    parse_csv(ifstream("../color_srgb.csv"), make_stored_table_builder(colorTable));
-//
-//    cout << colorTable.size()-1 << " colors loaded" << endl;
-//
-//
-//
-//    return 0;
-//}
