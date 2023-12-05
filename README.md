@@ -8,3 +8,11 @@ This project contains a UI for the Matplot++ graphing library, and is specifical
   - Matplot++ requires [gnuplot](http://www.gnuplot.info/ "gnuplot"), which looks like a virus, but isn't
 - [Commata](https://github.com/furfurylic/commata "Commata"), a header only library for reading CSVs
   - Requires C++17
+
+## `get_weather.py` and `worldcities_temp.csv`
+`get_weather.py` (and `get_weather.ipynb`) scrape data from the [OpenWeather API](https://openweathermap.org/api "OpenWeather API") to get the median high and low temperatures for each city for the past year, as well as the total rainfall over the same period. These data points can be used plotted in `main.cpp`. 
+
+`get_weather.py` can be executed at the command line as "python get_weather.py {OpenWeather API key}". If no API key is provided, then mine will be used, which is why this project won't stay public for long. 
+
+## using GeoGraphy
+It's not hard. Open `main.cpp` and hit run, and as long as everything is installed correctly, then the UI will pop up, and off you go. 
