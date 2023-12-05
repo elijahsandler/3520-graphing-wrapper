@@ -3,6 +3,7 @@
 #include <commata/parse_csv.hpp>
 #include <commata/stored_table.hpp>
 #include <algorithm> // this here should be bonus points
+#include "include/geoGrapher.h"
 
 using commata::make_stored_table_builder;
 using commata::parse_csv;
@@ -66,16 +67,18 @@ int main(int argc, char *argv[]) {
     stored_table world_cities;
 
     // load csv
-    parse_csv(std::ifstream("../worldcities.csv"),
+    parse_csv(std::ifstream("../worldcities_temp.csv"),
               make_stored_table_builder(world_cities));
     // each row is just a vector of stored values
 
     vector<string> latStr = getColumn(world_cities, getHeader(world_cities),
-                                             "lat", 100);
+                                             "lat", 150);
     vector<string> lonStr = getColumn(world_cities, getHeader(world_cities),
-                                      "lng", 100);
+                                      "lng", 150);
     vector<string> popStr = getColumn(world_cities, getHeader(world_cities),
-                                      "population", 100);
+                                      "population", 150);
+    vector<string> tempStr = getColumn(world_cities, getHeader(world_cities),
+                                      "temp", 150);
 
 
 
@@ -83,12 +86,21 @@ int main(int argc, char *argv[]) {
     vector<double> lat = convertToDoubles(latStr);
     vector<double> lon = convertToDoubles(lonStr);
     vector<double> pop = convertToDoubles(popStr);
+    vector<double> temp = convertToDoubles(tempStr);
+    auto log_pop =
+            transform(pop, [](double x) { return (log(x)/10); });
 
+    geobubble(lat, lon);
+//    hist(temp);
+//    geoscatter(lat, lon);
+//    title("temperature distribution for 500 most populated cities");
+//    xlabel("avg temperature");
+//    ylabel("count");
 
-//    auto log_tsunami_height =
-//            transform(tsunami_height, [](double x) { return log(x + 2); });
-//
-    geobubble(lat, lon, pop);
     show();
+
+//    Geographer geo("../worldcities_temp.csv");
+//    geo.histogram();
+
     return 0;
 }

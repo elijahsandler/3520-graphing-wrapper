@@ -30,7 +30,10 @@ FetchContent_MakeAvailable(commata)
 
 
 
-add_executable(cpp_graphing main.cpp)
+add_executable(cpp_graphing main.cpp
+        include/geoGrapher.h
+        src/geoGrapher.cpp
+        src/geoGrapher.cpp)
 target_link_libraries(cpp_graphing PUBLIC matplot)
 target_link_libraries(cpp_graphing PRIVATE commata)
 #target_link_libraries(3520_nn_project PRIVATE frugally-deep::fdeep)
