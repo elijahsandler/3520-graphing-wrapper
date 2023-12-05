@@ -29,7 +29,7 @@ public:
     void scatterplot();
     void histogram();
     void geobubble();
-    void printHeader(bool error = false);
+    void printHeader();
 
 };
 

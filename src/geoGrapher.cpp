@@ -12,7 +12,7 @@ using commata::make_stored_table_builder;
 using commata::parse_csv;
 using commata::stored_table;
 
-using namespace matplot; using namespace std;
+namespace plt = matplot; using namespace std;
 
 Geographer::Geographer(const char* csv_path) {
     // load csv
@@ -73,29 +73,20 @@ std::vector<double> Geographer::convertToDoubles(const vector<string>& vec) {
     return doubleVec;
 }
 
-void Geographer::printHeader(bool error) {
+void Geographer::printHeader() {
     cout << "Column names: ";
-    if(error) {
-        for(auto cell : getHeader(table)) {
-            cerr << cell << ", ";
-        }
-        cout << endl;
-    } else {
-        for(auto cell : getHeader(table)) {
-            cout << cell << ", ";
-        }
-        cout << endl;
+
+    for(auto cell : getHeader(table)) {
+        cout << cell << ", ";
     }
-
-
-
+    cout << endl;
 }
 
 string Geographer::requestFeature(const string& reasonForFeature) {
     bool validCol = false;
     string feat;
     do {
-        printHeader(false);
+        printHeader();
         cout << "Select a column " << reasonForFeature << ":" << endl;
         cin >> feat; cout << endl;
         validCol = testColumn(feat);
@@ -109,7 +100,7 @@ int Geographer::requestNumber() {
     int num;
 
     do {
-        cout << "Enter how many samples you'd like to graph:";
+        cout << "Enter how many cities you'd like to graph:" << endl;
         if (cin >> num) {
             // Input is an integer
             validInt = true;
@@ -148,12 +139,15 @@ void Geographer::histogram() {
     int max = requestNumber();
 
     vector<double> featVec = convertToDoubles(getColumn(table, header, feat, max));
-    hist(featVec);
-    title(feat + " distribution for" + (string) reinterpret_cast<const char *>(max) + "most populated cities");
-    xlabel(feat);
-    ylabel("count");
 
-    show();
+    plt::hist(featVec);
+
+    plt::title(feat + " distribution for " + to_string(max) + " most populated cities");
+    plt::xlabel(feat);
+    plt::ylabel("count");
+
+    plt::show();
+    getchar();
 }
 
 
