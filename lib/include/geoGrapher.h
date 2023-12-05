@@ -17,11 +17,12 @@ private:
     stored_table table;
     vector<string> header;
     vector<double> convertToDoubles(const vector<string>& vec);
-    vector<string> getColumn(stored_table table, const vector<string>& header,
-                             const string& colName, int max = 100);
+    vector<string> getColumn(const string& colName, int max = 100);
+    vector<double> scaleColumn(const vector<double>& vec);
+    bool requestBool(string message);
     vector<string> getHeader(const stored_table& table);
     string requestFeature(const string& reasonForFeature);
-    bool testColumn(string col);
+    bool testColumn(const string& col);
     int requestNumber();
 
 public:

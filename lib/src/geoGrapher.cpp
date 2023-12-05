@@ -2,7 +2,7 @@
 // Created by elija on 12/4/2023.
 //
 #include <iostream>
-#include "lib/matplot/matplot.h"
+#include <matplot/matplot.h>
 #include "commata/parse_csv.hpp"
 #include "commata/stored_table.hpp"
 #include <algorithm> // this here should be bonus points
@@ -22,16 +22,14 @@ Geographer::Geographer(const char* csv_path) {
     header = getHeader(table);
 }
 
-vector<string> Geographer::getHeader(const stored_table& table) {
-    std::vector<string> header;
-    for(auto cell : table.content()[0]) {
+vector<string> Geographer::getHeader(const stored_table& tab) {
+    for(auto cell : tab.content()[0]) {
         header.emplace_back(static_cast<string>(cell));
     }
     return header;
 }
 
-vector<string> Geographer::getColumn(stored_table table, const vector<string>& header,
-                         const string& colName, const int max) {
+vector<string> Geographer::getColumn(const string& colName, const int max) {
     vector<string> column;
 
     auto it = find(header.begin(), header.end(), colName);
@@ -73,10 +71,34 @@ std::vector<double> Geographer::convertToDoubles(const vector<string>& vec) {
     return doubleVec;
 }
 
+vector<double> Geographer::scaleColumn(const vector<double> &vec) {
+
+    auto minmax = minmax_element(vec.begin(), vec.end());
+    double range = *minmax.second - *minmax.first;
+
+    std::vector<double> scaledVector;
+
+    for (const auto& value : vec) {
+        double scaledValue = (value - *minmax.first) / (range * 10);
+        scaledVector.push_back(scaledValue);
+    }
+    return scaledVector;
+}
+
+bool Geographer::requestBool(string message) {
+    string input;
+
+    cout << "Enter anything to " << message << ", or type 'no':" << endl;
+    cin >> input;
+    cout << input;
+
+    return input != string("no");
+}
+
 void Geographer::printHeader() {
     cout << "Column names: ";
 
-    for(auto cell : getHeader(table)) {
+    for(auto cell : header) {
         cout << cell << ", ";
     }
     cout << endl;
@@ -87,8 +109,8 @@ string Geographer::requestFeature(const string& reasonForFeature) {
     string feat;
     do {
         printHeader();
-        cout << "Select a column " << reasonForFeature << ":" << endl;
-        cin >> feat; cout << endl;
+        cout << "Select a column " << reasonForFeature << ": " << endl;
+        cin >> feat;
         validCol = testColumn(feat);
     } while(!validCol);
 
@@ -100,9 +122,8 @@ int Geographer::requestNumber() {
     int num;
 
     do {
-        cout << "Enter how many cities you'd like to graph:" << endl;
+        cout << "Enter how many cities you'd like to graph: " << endl;
         if (cin >> num) {
-            // Input is an integer
             validInt = true;
         } else {
             // this block was chatgpt
@@ -116,7 +137,7 @@ int Geographer::requestNumber() {
     return num;
 }
 
-bool Geographer::testColumn(string col) {
+bool Geographer::testColumn(const string& col) {
     auto it = find(header.begin(), header.end(), col);
     if (it != header.end()) {
         int idx = distance(header.begin(), it);
@@ -138,7 +159,7 @@ void Geographer::histogram() {
     string feat = requestFeature("to be used as the feature");
     int max = requestNumber();
 
-    vector<double> featVec = convertToDoubles(getColumn(table, header, feat, max));
+    vector<double> featVec = convertToDoubles(getColumn(feat, max));
 
     plt::hist(featVec);
 
@@ -150,5 +171,42 @@ void Geographer::histogram() {
     getchar();
 }
 
+void Geographer::scatterplot() {
+    string x_feat = requestFeature("to be graphed on the x axis");
+    string y_feat = requestFeature("to be graphed on the y axis");
 
+    int max = requestNumber();
+    vector<double> x_featVec = convertToDoubles(getColumn(x_feat, max));
+    vector<double> y_featVec = convertToDoubles(getColumn(y_feat, max));
 
+    plt::scatter(x_featVec, y_featVec);
+    plt::title(x_feat + " vs " + y_feat + " for " + to_string(max) + " most populated cities");
+    plt::xlabel(x_feat);
+    plt::ylabel(y_feat);
+
+    plt::show();
+    getchar();
+}
+
+void Geographer::geobubble() {
+    int max = requestNumber();
+
+    string size_feat = requestFeature("to be the size of the bubbles");
+    vector<double> size_featVec = convertToDoubles(getColumn(size_feat, max));
+
+    bool shouldScale = requestBool("scale " + size_feat);
+
+    if (shouldScale) {
+        size_featVec = scaleColumn(size_featVec);
+    }
+
+    vector<double> lat = convertToDoubles(getColumn("lat", max));
+    vector<double> lon = convertToDoubles(getColumn("lng", max));
+
+    plt::geobubble(lat, lon, size_featVec);
+
+    plt::title("location and " + size_feat + " for " + to_string(max) + " most populated cities");
+
+    plt::show();
+    getchar();
+}
