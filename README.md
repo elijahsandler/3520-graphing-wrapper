@@ -14,5 +14,5 @@ This project contains a UI for the Matplot++ graphing library, and is specifical
 
 `get_weather.py` can be executed at the command line as "python get_weather.py _yourOpenWeatherAPIkey_". If no API key is provided, then mine will be used, which is why this project won't stay public for long. If you have Python installed, you might get a series of error messages telling you about libraries used in `get_weather.py`, but you should be able to install most of them with "pip install _library_". If it doesn't work, it's probably because the API timed me (or you) out. If that happens, and your job is to assign a numerical value to my time and effort, please be kind. It works, I promise. 
 
-## using GeoGraphy
+## Using GeoGraphy
 It's not hard. Open `main.cpp` and hit run, and as long as everything is installed correctly, then the UI will pop up, and off you go. 
