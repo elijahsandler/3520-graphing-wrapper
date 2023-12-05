@@ -1,4 +1,4 @@
-# 3520-nn-project
+# GeoGrapher
 
 ## Overview
 This project contains a UI for the Matplot++ graphing library, and is specifically focused on plotting geographical data (hence the name "GeoGrapher", which I thought was funny).
