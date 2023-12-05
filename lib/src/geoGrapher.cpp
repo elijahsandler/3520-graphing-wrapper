@@ -2,9 +2,9 @@
 // Created by elija on 12/4/2023.
 //
 #include <iostream>
-#include <matplot/matplot.h>
-#include <commata/parse_csv.hpp>
-#include <commata/stored_table.hpp>
+#include "lib/matplot/matplot.h"
+#include "commata/parse_csv.hpp"
+#include "commata/stored_table.hpp"
 #include <algorithm> // this here should be bonus points
 #include "../include/geoGrapher.h"
 

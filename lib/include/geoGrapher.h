@@ -2,8 +2,8 @@
 // Created by elija on 12/4/2023.
 //
 #include <string>
-#include <commata/parse_csv.hpp>
-#include <commata/stored_table.hpp>
+#include "commata/parse_csv.hpp"
+#include "commata/stored_table.hpp"
 using namespace std;
 using commata::make_stored_table_builder;
 using commata::parse_csv;

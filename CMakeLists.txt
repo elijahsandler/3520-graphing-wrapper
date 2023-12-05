@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.26)
 
-project(3520_nn_project)
+project(geographer)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -15,12 +15,9 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(commata)
 
-
-
-add_executable(cpp_graphing main.cpp
-        include/geoGrapher.h
-        src/geoGrapher.cpp
-        src/geoGrapher.cpp)
-target_link_libraries(cpp_graphing PUBLIC matplot)
-target_link_libraries(cpp_graphing PRIVATE commata)
+add_executable(geographer main.cpp
+        lib/include/geoGrapher.h
+        lib/src/geoGrapher.cpp)
+target_link_libraries(geographer PUBLIC matplot)
+target_link_libraries(geographer PRIVATE commata)
 

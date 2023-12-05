@@ -5,6 +5,5 @@
     <mapping directory="$PROJECT_DIR$/lib/commata" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/frugally-deep" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/matplotplusplus" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/vcpkg" vcs="Git" />
   </component>
 </project>

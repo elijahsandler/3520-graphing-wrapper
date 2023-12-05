@@ -3,7 +3,7 @@
 #include <commata/parse_csv.hpp>
 #include <commata/stored_table.hpp>
 #include <algorithm> // this here should be bonus points
-#include "include/geoGrapher.h"
+#include "lib/include/geoGrapher.h"
 
 using commata::make_stored_table_builder;
 using commata::parse_csv;
