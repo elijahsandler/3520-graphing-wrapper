@@ -91,12 +91,12 @@ void Geographer::printHeader(bool error) {
 
 }
 
-string Geographer::requestFeature(string reasonForFeature) {
+string Geographer::requestFeature(const string& reasonForFeature) {
     bool validCol = false;
     string feat;
     do {
         printHeader(false);
-        cout << "Select a column " << reasonForFeature << " -  ";
+        cout << "Select a column " << reasonForFeature << ":" << endl;
         cin >> feat; cout << endl;
         validCol = testColumn(feat);
     } while(!validCol);
@@ -109,7 +109,7 @@ int Geographer::requestNumber() {
     int num;
 
     do {
-        cout << "Enter how many cities you'd like to graph -  ";
+        cout << "Enter how many samples you'd like to graph:";
         if (cin >> num) {
             // Input is an integer
             validInt = true;
@@ -118,7 +118,7 @@ int Geographer::requestNumber() {
             // Input is not an integer
             cin.clear(); // Clear error flag
             cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            cout << "Invalid input. Please enter a valid integer.\n";
+            cout << "Invalid input. Please enter a valid integer." << endl;
         }
     } while (!validInt);
 

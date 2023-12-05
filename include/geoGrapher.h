@@ -20,7 +20,7 @@ private:
     vector<string> getColumn(stored_table table, const vector<string>& header,
                              const string& colName, int max = 100);
     vector<string> getHeader(const stored_table& table);
-    string requestFeature(string reasonForFeature);
+    string requestFeature(const string& reasonForFeature);
     bool testColumn(string col);
     int requestNumber();
 
