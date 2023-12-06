@@ -15,5 +15,5 @@ This project contains a UI for the Matplot++ graphing library, and is specifical
 `get_weather.py` can be executed at the command line as "python get_weather.py _yourOpenWeatherAPIkey_". If you have Python installed, you might get a series of error messages telling you about libraries used in `get_weather.py`, but you should be able to install most of them with "pip install _library_". If it doesn't work, it's probably because the OpenWeather AI is touchy and annoying to deal with. If that happens, and your job is to assign a numerical value to my time and effort, please be kind. It works, I promise.
 The command can also be run within the UI. 
 
-## using GeoGraphy
-Run `main.cpp`. 
+## Using GeoGraphy
+Run `main.cpp` and follow the prompts. After creating a plot, the program will prompt you to hit Enter. When you do, the plot you just made will disappear, and you'll be able to create another. The program currently supports histograms, scatterplots, and geobubble plots, where each city is graphed in its location, with the size of the bubble equal to a parameter you pass. 
