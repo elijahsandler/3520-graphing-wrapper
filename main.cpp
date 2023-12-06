@@ -26,7 +26,7 @@ void ui(Geographer geo) {
             cout << "Please enter your OpenWeather API key:\n";
             cin >> key;
             cout << endl;
-            system("python ..\\get_weather.py " + key);
+            system(("python ..\\get_weather.py " + key).c_str());
         }
         else if(input != "done") {cout << "Invalid input." << endl;}
 
