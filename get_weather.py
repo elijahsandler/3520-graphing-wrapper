@@ -17,41 +17,27 @@ import sys
 def kelvin_to_fahrenheit(kelvin_temp):
     return (kelvin_temp - 273.15) * 9/5 + 32
 
-def get_yearly_weather_data(api_key, lat, lon):
-    base_url = "http://api.openweathermap.org/data/2.5/onecall/timemachine"
-    params = {
-        'lat': lat,
-        'lon': lon,
-        'appid': api_key,
-        'start': 1640995200,
-        'end': 1641067200,   
-    }
+def get_weather_data(api_key, lat, lon): 
+    url = f"https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&appid={api_key}&units=imperial"
 
-    response = requests.get(base_url, params=params)
+    response = requests.get(url)
 
-    if response.status_code == 200:
-        data = response.json()
+    data = response.json()
+    
+    return data
 
-        high_temps_kelvin = [entry['temp']['max'] for entry in data['hourly']]
-        low_temps_kelvin = [entry['temp']['min'] for entry in data['hourly']]
-        total_rainfall = sum(entry['rain']['1h'] if 'rain' in entry else 0 for entry in data['hourly'])
+    low = data['daily'][0]['temp']['min']
+    high = data['daily'][0]['temp']['max']
+    rain = data['daily'][0]['rain']
 
-        high_temps_fahrenheit = [kelvin_to_fahrenheit(temp) for temp in high_temps_kelvin]
-        low_temps_fahrenheit = [kelvin_to_fahrenheit(temp) for temp in low_temps_kelvin]
-
-        median_high_temp = statistics.median(high_temps_fahrenheit)
-        median_low_temp = statistics.median(low_temps_fahrenheit)
-
-        return median_high_temp, median_low_temp, total_rainfall
-    else:
-        return None, None, None
+    return high, low, rain
 
 
 # In[ ]:
 
 
 df_cities = pd.read_csv('worldcities.csv')
-df_cities = df_cities[df_cities.index < 75]
+df_cities = df_cities[df_cities.index < 500]
 
 
 # In[ ]:
@@ -67,17 +53,13 @@ df_cities['capital'].replace(cap_dict, inplace=True)
 try:
     api_key = sys.argv[1]
 except(IndexError):
-    api_key = "60d37b0c7315fd2976c8042ba444c932"
+    api_key = "852c39dbb0207981c036677327cf4947"
 try:
     for idx in tqdm(df_cities.index, desc='collecting weather data', colour='#7ba67e'):
-        high, low, rain = get_yearly_weather_data(api_key, df_cities.loc[idx, 'lat'], df_cities.loc[idx, 'lng'])
+        print(df_cities.loc[idx, 'city_ascii'])
+        high, low, rain = get_weather_data(api_key, df_cities.loc[idx, 'lat'], df_cities.loc[idx, 'lng'])
         df_cities.loc[idx, ['low_temp', 'high_temp', 'rain']] = [high, low, rain]
+    df_cities.to_csv('worldcities_temp.csv')
 except:
-    pass
-
-
-# In[ ]:
-
-
-df_cities.to_csv('worldcities_temp.csv')
+    print("Error accessing API\n")
 
