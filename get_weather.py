@@ -40,6 +40,6 @@ try:
         high, low, rain = get_weather_data(api_key, df_cities.loc[idx, 'lat'], df_cities.loc[idx, 'lng'])
         df_cities.loc[idx, ['low_temp', 'high_temp', 'rain']] = [high, low, rain]
     df_cities.to_csv('worldcities_temp.csv')
-except:
-    print("Error accessing API\n")
+except Exception as e:
+    print(f"Error accessing API: {e}\n")
 
