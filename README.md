@@ -17,4 +17,4 @@ This project contains a UI for the Matplot++ graphing library, and is specifical
 The reason I don't execute `get_weather.py` with `<cstdlib>` in the C++ files (which I did, but removed it) is because the API is touchy and I really don't want to call it accidentally, or tempt people into calling it multiple times and getting themselves (or me) blocked. 
 
 ## using GeoGraphy
-It's not hard. Open `main.cpp` and hit run, and as long as everything is installed correctly, then the UI will pop up, and off you go. 
+Run `main.cpp`. 
