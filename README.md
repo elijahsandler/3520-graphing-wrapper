@@ -12,9 +12,8 @@ This project contains a UI for the Matplot++ graphing library, and is specifical
 ## `get_weather.py` and `worldcities_temp.csv`
 `get_weather.py` (and `get_weather.ipynb`) scrape data from the [OpenWeather API](https://openweathermap.org/api "OpenWeather API") to get the median high and low temperatures for each city for the past year, as well as the total rainfall over the same period. These data points can be used in `main.cpp`. 
 
-`get_weather.py` can be executed at the command line as "python get_weather.py _yourOpenWeatherAPIkey_". If no API key is provided, then mine will be used, which is why this project won't stay public for long. If you have Python installed, you might get a series of error messages telling you about libraries used in `get_weather.py`, but you should be able to install most of them with "pip install _library_". If it doesn't work, it's probably because the API timed me (or you) out. If that happens, and your job is to assign a numerical value to my time and effort, please be kind. It works, I promise. 
-
-The reason I don't execute `get_weather.py` with `<cstdlib>` in the C++ files (which I did, but removed it) is because the API is touchy and I really don't want to call it accidentally, or tempt people into calling it multiple times and getting themselves (or me) blocked. 
+`get_weather.py` can be executed at the command line as "python get_weather.py _yourOpenWeatherAPIkey_". If no API key is provided, then mine will be used, which is why this project won't stay public for long. If you have Python installed, you might get a series of error messages telling you about libraries used in `get_weather.py`, but you should be able to install most of them with "pip install _library_". If it doesn't work, it's probably because the API timed me (or you) out. If that happens, and your job is to assign a numerical value to my time and effort, please be kind. It works, I promise.
+It can also be run within the UI, in which case it will use my default API key (which is blocked as of 12/6 due to a change in subscription plan)
 
 ## using GeoGraphy
 Run `main.cpp`. 
