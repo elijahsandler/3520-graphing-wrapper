@@ -15,7 +15,6 @@ import sys
 
 
 def kelvin_to_fahrenheit(kelvin_temp):
-def kelvin_to_fahrenheit(kelvin_temp):
     return (kelvin_temp - 273.15) * 9/5 + 32
 
 def get_yearly_weather_data(api_key, lat, lon):
@@ -52,7 +51,7 @@ def get_yearly_weather_data(api_key, lat, lon):
 
 
 df_cities = pd.read_csv('worldcities.csv')
-df_cities = df_cities[df_cities.index < 500]
+df_cities = df_cities[df_cities.index < 75]
 
 
 # In[ ]:
