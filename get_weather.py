@@ -34,6 +34,6 @@ try:
     for idx in tqdm(df_cities.index, desc='collecting weather data', colour='#7ba67e'):
         weather = get_weather_data(api_key, df_cities.loc[idx, 'lat'], df_cities.loc[idx, 'lng'])
         df_cities.loc[idx, ['high_temp', 'low_temp', 'prob_rain', 'wind_speed', 'moon_phase']] = weather
-    df_cities.to_csv('worldcities_temp.csv')
+    df_cities.to_csv('..\worldcities_temp.csv')
 except Exception as e:
     print(f"Error accessing API: {e}\n")
