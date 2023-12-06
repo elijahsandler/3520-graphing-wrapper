@@ -13,7 +13,6 @@ def get_weather_data(api_key, lat, lon):
     response = requests.get(url)
 
     data = response.json()
-    return data
 
     low = data['daily'][0]['temp']['min']
     high = data['daily'][0]['temp']['max']
