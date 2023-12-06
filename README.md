@@ -10,7 +10,7 @@ This project contains a UI for the Matplot++ graphing library, and is specifical
   - Requires C++17
 
 ## `get_weather.py` and `worldcities_temp.csv`
-`get_weather.py` (and `get_weather.ipynb`) scrape data from the [OpenWeather API](https://openweathermap.org/api "OpenWeather API") to get the median high and low temperatures for each city for the past year, as well as the total rainfall over the same period. These data points can be used in `main.cpp`. 
+`get_weather.py` scrapes data from the [OpenWeather API](https://openweathermap.org/api "OpenWeather API") to get the high and low temperatures for each city for today, as well as the  rainfall over the same period. These data points can be used in `main.cpp`. 
 
 `get_weather.py` can be executed at the command line as "python get_weather.py _yourOpenWeatherAPIkey_". If you have Python installed, you might get a series of error messages telling you about libraries used in `get_weather.py`, but you should be able to install most of them with "pip install _library_". If it doesn't work, it's probably because the OpenWeather AI is touchy and annoying to deal with. If that happens, and your job is to assign a numerical value to my time and effort, please be kind. It works, I promise.
 The command can also be run within the UI. 
