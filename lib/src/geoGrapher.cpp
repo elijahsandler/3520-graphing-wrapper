@@ -191,19 +191,20 @@ void Geographer::scatterplot() {
 void Geographer::geobubble() {
     int max = requestNumber();
 
+    vector<double> lat = convertToDoubles(getColumn("lat", max));
+    vector<double> lon = convertToDoubles(getColumn("lng", max));
+
     string size_feat = requestFeature("to be the size of the bubbles");
     vector<double> size_featVec = convertToDoubles(getColumn(size_feat, max));
 
     bool shouldScale = requestBool("scale " + size_feat);
 
     if (shouldScale) {
-        size_featVec = scaleColumn(size_featVec);
+        vector<double> scale_featVec = scaleColumn(size_featVec);
+        plt::geobubble(lat, lon, scale_featVec);
+    } else {
+        plt::geobubble(lat, lon, size_featVec);
     }
-
-    vector<double> lat = convertToDoubles(getColumn("lat", max));
-    vector<double> lon = convertToDoubles(getColumn("lng", max));
-
-    plt::geobubble(lat, lon, size_featVec);
 
     plt::title("location and " + size_feat + " for " + to_string(max) + " most populated cities");
 
