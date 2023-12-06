@@ -56,7 +56,6 @@ except(IndexError):
     api_key = "852c39dbb0207981c036677327cf4947"
 try:
     for idx in tqdm(df_cities.index, desc='collecting weather data', colour='#7ba67e'):
-        print(df_cities.loc[idx, 'city_ascii'])
         high, low, rain = get_weather_data(api_key, df_cities.loc[idx, 'lat'], df_cities.loc[idx, 'lng'])
         df_cities.loc[idx, ['low_temp', 'high_temp', 'rain']] = [high, low, rain]
     df_cities.to_csv('worldcities_temp.csv')
