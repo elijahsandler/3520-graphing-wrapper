@@ -1,17 +1,9 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import pandas as pd
 import requests
 from tqdm import tqdm
 import statistics
 import sys
 
-
-# In[4]:
 
 
 def kelvin_to_fahrenheit(kelvin_temp):
@@ -33,27 +25,16 @@ def get_weather_data(api_key, lat, lon):
     return high, low, rain
 
 
-# In[ ]:
 
 
 df_cities = pd.read_csv('..\worldcities.csv')
 df_cities = df_cities[df_cities.index < 500]
 
 
-# In[ ]:
-
-
 cap_dict = dict(zip(df_cities['capital'].unique(), range(int(4))))
 df_cities['capital'].replace(cap_dict, inplace=True)
 
-
-# In[ ]:
-
-
-try:
-    api_key = sys.argv[1]
-except(IndexError):
-    api_key = "852c39dbb0207981c036677327cf4947"
+api_key = sys.argv[1]
 try:
     for idx in tqdm(df_cities.index, desc='collecting weather data', colour='#7ba67e'):
         high, low, rain = get_weather_data(api_key, df_cities.loc[idx, 'lat'], df_cities.loc[idx, 'lng'])
