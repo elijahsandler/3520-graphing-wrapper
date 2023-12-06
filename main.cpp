@@ -21,7 +21,13 @@ void ui(Geographer geo) {
         if(input == "scatter") {geo.scatterplot();}
         else if(input == "geobubble") {geo.geobubble();}
         else if(input == "histogram") {geo.histogram();}
-        else if(input == "update") {system("python ..\\get_weather.py");}
+        else if(input == "update") {
+            string key;
+            cout << "Please enter your OpenWeather API key:\n";
+            cin >> key;
+            cout << endl;
+            system("python ..\\get_weather.py " + key);
+        }
         else if(input != "done") {cout << "Invalid input." << endl;}
 
     } while(input != "done");
