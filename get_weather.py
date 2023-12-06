@@ -15,16 +15,17 @@ import sys
 
 
 def kelvin_to_fahrenheit(kelvin_temp):
+def kelvin_to_fahrenheit(kelvin_temp):
     return (kelvin_temp - 273.15) * 9/5 + 32
 
 def get_yearly_weather_data(api_key, lat, lon):
-    base_url = "http://example-api.com/historical-weather"  # Replace with the actual API endpoint
+    base_url = "http://api.openweathermap.org/data/2.5/onecall/timemachine"
     params = {
         'lat': lat,
         'lon': lon,
         'appid': api_key,
-        'start_date': '2022-01-01',  # Replace with the start date for the past year
-        'end_date': '2022-12-31',    # Replace with the end date for the past year
+        'start': 1640995200,
+        'end': 1641067200,   
     }
 
     response = requests.get(base_url, params=params)
@@ -32,9 +33,9 @@ def get_yearly_weather_data(api_key, lat, lon):
     if response.status_code == 200:
         data = response.json()
 
-        high_temps_kelvin = [entry['high_temperature'] for entry in data['list']]
-        low_temps_kelvin = [entry['low_temperature'] for entry in data['list']]
-        total_rainfall = sum(entry['rainfall'] for entry in data['list'])
+        high_temps_kelvin = [entry['temp']['max'] for entry in data['hourly']]
+        low_temps_kelvin = [entry['temp']['min'] for entry in data['hourly']]
+        total_rainfall = sum(entry['rain']['1h'] if 'rain' in entry else 0 for entry in data['hourly'])
 
         high_temps_fahrenheit = [kelvin_to_fahrenheit(temp) for temp in high_temps_kelvin]
         low_temps_fahrenheit = [kelvin_to_fahrenheit(temp) for temp in low_temps_kelvin]
@@ -67,11 +68,11 @@ df_cities['capital'].replace(cap_dict, inplace=True)
 try:
     api_key = sys.argv[1]
 except(IndexError):
-    api_key = "852c39dbb0207981c036677327cf4947"
+    api_key = "60d37b0c7315fd2976c8042ba444c932"
 try:
     for idx in tqdm(df_cities.index, desc='collecting weather data', colour='#7ba67e'):
         high, low, rain = get_yearly_weather_data(api_key, df_cities.loc[idx, 'lat'], df_cities.loc[idx, 'lng'])
-        df_cities.loc[idx, ['low_temp', 'high_temp', 'rain']] = temp
+        df_cities.loc[idx, ['low_temp', 'high_temp', 'rain']] = [high, low, rain]
 except:
     pass
 
