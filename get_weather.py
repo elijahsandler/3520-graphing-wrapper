@@ -36,7 +36,7 @@ def get_weather_data(api_key, lat, lon):
 # In[ ]:
 
 
-df_cities = pd.read_csv('worldcities.csv')
+df_cities = pd.read_csv('..\worldcities.csv')
 df_cities = df_cities[df_cities.index < 500]
 
 
